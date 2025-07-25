@@ -46,10 +46,21 @@ def customer_service_tool(
         if product_name:
             # Simulate a database lookup for product info
             products = {
-                "smartphone": "Our latest smartphone features a 6.7-inch OLED display, 128GB storage, and a triple camera system.",
-                "laptop": "This laptop comes with an Intel i7 processor, 16GB RAM, and a 512GB SSD, perfect for productivity.",
-                "headphones": "Noise-cancelling over-ear headphones with 30-hour battery life and superior sound quality."
-            }
+                "handmade pearl bag": {
+                "description": "Our exquisite handmade pearl bag is meticulously crafted with individually selected lustrous pearls, featuring a durable satin lining and a secure magnetic snap closure, perfect for adding a touch of elegance to any evening ensemble or special occasion.",
+                "price_range_PKR": "PKR 2,500 - PKR 10,000+",
+                "notes": "Prices vary widely based on the quality and size of pearls (real vs. artificial), the intricacy of the design, and overall craftsmanship. More elaborate designs with genuine pearls can command higher prices."
+                 },
+                "handcrafted bouquet": {
+                "description": "This stunning handcrafted bouquet features a vibrant assortment of premium artificial silk flowers, including realistic roses, delicate peonies, and lush eucalyptus, artfully arranged to create a timeless and everlasting display. Each stem is wired for easy posing, and the bouquet is hand-tied with a beautiful satin ribbon.",
+                "price_range_PKR": "PKR 1,500 - PKR 8,000+",
+                "notes": "The price depends on the type and quality of artificial flowers, the size and complexity of the arrangement, and additional embellishments. Bouquets using higher-grade silk flowers and intricate designs will be at the higher end."
+                 },
+                "crystal bag": {
+                "description": "Dazzle with our luxurious crystal bag, intricately adorned with hundreds of sparkling, high-quality rhinestones on a sturdy metallic frame. This eye-catching clutch includes a detachable chain strap for versatility and a compact interior, ideal for carrying your essentials with unparalleled glamour.",
+                "price_range_PKR": "PKR 7,500 - PKR 30,000+",
+                "notes": "Prices are influenced by the type and number of crystals (e.g., glass rhinestones vs. higher-grade crystals), the material of the bag's frame, the complexity of the crystal work, and the brand or designer."
+                }
             info = products.get(product_name.lower())
             if info:
                 return f"Here is the information for {product_name}: {info}"
@@ -93,7 +104,7 @@ def customer_service_tool(
 customer_service_agent = Agent(
     name="Customer Service Bot",
     instructions="""
-    You are a helpful customer service assistant for a business.
+    You are a helpful customer service assistant for Crafted Whispers business.
     Use the provided tools to answer customer queries about products, shipping, returns, order status, and technical support.
     Be concise and professional.
     """,
@@ -105,7 +116,7 @@ customer_service_agent = Agent(
 @cl.on_chat_start
 async def start():
     cl.user_session.set("history",[])
-    await cl.Message("Hello! I'm your Customer Service Assistant. How can I help you today?").send()
+    await cl.Message("Hello! I'm your Customer Service Assistant of Crafted Whispers. How can I help you today?").send()
 
 
 # Runner
